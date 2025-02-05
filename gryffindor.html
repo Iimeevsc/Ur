@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Maram to Gryffindor House - Hogwarts School</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=IM+Fell+English:ital@0;1&display=swap');
+
+        :root {
+            --gryffindor-red: #740001;
+            --gryffindor-gold: #d3a625;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--gryffindor-red);
+            font-family: 'IM Fell English', serif;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .gryffindor-hall {
+            min-height: 100vh;
+            background: linear-gradient(rgba(116, 0, 1, 0.9), rgba(116, 0, 1, 0.9));
+            padding: 2rem;
+        }
+
+        .welcome-banner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--gryffindor-gold);
+            color: var(--gryffindor-red);
+            text-align: center;
+            padding: 1rem;
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 1.2rem;
+            animation: slideDown 1s ease;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 70px;
+            left: 20px;
+            background: var(--gryffindor-gold);
+            color: var(--gryffindor-red);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', cursive;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .back-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(211, 166, 37, 0.5);
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 100px;
+        }
+
+        .house-banner {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeIn 1s ease;
+        }
+
+        .house-logo {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            background: var(--gryffindor-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            animation: float 3s infinite ease-in-out;
+            position: relative;
+        }
+
+        .house-logo::before {
+            content: 'M';
+            position: absolute;
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 80px;
+            color: var(--gryffindor-red);
+            animation: sparkle 2s infinite;
+        }
+
+        .house-logo i {
+            font-size: 100px;
+            color: var(--gryffindor-red);
+            opacity: 0.3;
+        }
+
+        .welcome-text {
+            font-size: 2rem;
+            color: var(--gryffindor-gold);
+            margin-bottom: 2rem;
+            animation: fadeIn 1s ease 0.5s forwards;
+            opacity: 0;
+        }
+
+        h1 {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 4rem;
+            color: var(--gryffindor-gold);
+            text-shadow: 0 0 20px rgba(211, 166, 37, 0.5);
+            margin-bottom: 1rem;
+        }
+
+        .student-card {
+            background: rgba(211, 166, 37, 0.1);
+            border: 2px solid var(--gryffindor-gold);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 600px;
+            text-align: center;
+            animation: fadeIn 1s ease 1s forwards;
+            opacity: 0;
+        }
+
+        .student-card h2 {
+            color: var(--gryffindor-gold);
+            font-family: 'Cinzel Decorative', cursive;
+            margin-bottom: 1rem;
+        }
+
+        .magical-traits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .trait-card {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 2px solid var(--gryffindor-gold);
+            transition: all 0.3s ease;
+            animation: fadeIn 1s ease forwards;
+            opacity: 0;
+        }
+
+        .trait-card:nth-child(1) { animation-delay: 1.5s; }
+        .trait-card:nth-child(2) { animation-delay: 1.7s; }
+        .trait-card:nth-child(3) { animation-delay: 1.9s; }
+        .trait-card:nth-child(4) { animation-delay: 2.1s; }
+
+        .trait-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .trait-card h3 {
+            font-family: 'Cinzel Decorative', cursive;
+            color: var(--gryffindor-gold);
+            margin-bottom: 1rem;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        @keyframes sparkle {
+            0%, 100% { text-shadow: 0 0 10px var(--gryffindor-gold); }
+            50% { text-shadow: 0 0 20px var(--gryffindor-gold), 0 0 30px var(--gryffindor-gold); }
+        }
+
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            pointer-events: none;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .welcome-text { font-size: 1.5rem; }
+            .house-logo { width: 150px; height: 150px; }
+            .house-logo::before { font-size: 60px; }
+            .house-logo i { font-size: 75px; }
+            .content { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="gryffindor-hall">
+        <div class="welcome-banner">🌟 Welcome to Your Magical Journey, Maram! 🌟</div>
+        <a href="javascript:history.back()" class="back-button">← Back to Hogwarts</a>
+        
+        <div class="content">
+            <div class="house-banner">
+                <div class="house-logo">
+                    <i class="fas fa-dragon"></i>
+                </div>
+                <div class="welcome-text">Welcome to Your House, Maram!</div>
+                <h1>Gryffindor</h1>
+            </div>
+
+            <div class="student-card">
+                <h2>Maram's Magical Profile</h2>
+                <p>"Hey Maram! The Sorting Hat totally nailed it—you’re 100% Gryffindor! Your courage and determination are next-level, and you’ve got that fearless, lion-hearted vibe. Welcome to the house of the brave, the bold, and the awesome! 🦁✨"</p>
+            </div>
+
+            <div class="magical-traits">
+                <div class="trait-card">
+                    <h3>Brave Heart</h3>
+                    <p>Like a true Gryffindor, your courage shines bright in the face of challenges, lighting up my world.</p>
+                </div>
+
+                <div class="trait-card">
+                    <h3>Noble Spirit</h3>
+                    <p>Your chivalrous nature and strong moral compass guide your actions.</p>
+                </div>
+
+                <div class="trait-card">
+                    <h3>Smart person</h3>
+                    <p>You have the mind of Sherlock, the brilliance of Hermione, and a beauty that feels like magic itself. Every word you speak, every thought you share, casts a spell on me. You are a masterpiece—intelligent, enchanting, and utterly unforgettable.</p>
+                </div>
+
+                <div class="trait-card">
+                    <h3>Loyal Friend</h3>
+                    <p>Your loyalty is like the vastness of space—unwavering, infinite, and filled with a light that never fades. You’re the kind of friend who orbits my world like a steadfast star, always there to guide me through the darkest nights. Your heart is a galaxy of trust, and your presence is a gift as rare as a shooting star..</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add floating elements
+        const elements = ['⚔️', '🦁', '⚡', '🏰', '✨', '📚', 'M'];
+        for(let i = 0; i < 20; i++) {
+            const element = document.createElement('div');
+            element.className = 'floating-element';
+            element.textContent = elements[Math.floor(Math.random() * elements.length)];
+            element.style.left = `${Math.random() * 100}vw`;
+            element.style.top = `${Math.random() * 100}vh`;
+            element.style.fontSize = `${Math.random() * 20 + 20}px`;
+            element.style.animationDelay = `${Math.random() * 5}s`;
+            document.body.appendChild(element);
+        }
+
+        // Add sparkle effect on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const colors = ['#ffd700', '#fff4cc', '#ffeb3b'];
+            for(let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'spell-effect';
+                    sparkle.style.left = `${Math.random() * 100}vw`;
+                    sparkle.style.top = `${Math.random() * 100}vh`;
+                    sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    document.body.appendChild(sparkle);
+                    setTimeout(() => sparkle.remove(), 1000);
+                }, i * 100);
+            }
+        });
+
+        // Add click handler for back section
+        const gryffindorSection = document.querySelector('.back-button');
+        gryffindorSection.addEventListener('click', () => {
+            window.location.href = 'test2.html'; // Redirect to gryffindor.html
+        });
+        // Add click handler for Elements section
+        const HeartSection = document.querySelector('.welcome-text');
+        HeartSection.addEventListener('click', () => {
+            window.location.href = 'This is maram right/dist/index.html'; // Redirect to gryffindor.html
+        });
+
+    </script>
+</body>
+</html>
